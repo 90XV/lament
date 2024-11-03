@@ -1,0 +1,89 @@
+/* Global color variables */
+:root {
+    --background-color: #121212;  /* off-black */
+    --card-background: rgba(128,128,128, 0.5);   /* grey */
+    --text-color: #fff;           /* white for text */
+    --link-color: #fff;           /* white for links */
+    --link-hover-color: #cccccc;  /* lighter grey on hover */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /*background-color: var(--background-color);*/
+    background-image: url('background.jpg');
+    background-size: cover;        
+    background-position: center; 
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 400px; /* Fixed width of 600 pixels */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    max-width: 100%; /* Ensure responsiveness */
+}
+
+.icon {
+    width: 10rem;   /* 60 pixels diameter */
+    height: 10rem;  /* 60 pixels diameter */
+    border-radius: 50%; /* Make it a circle */
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Space between links and the player */
+}
+
+.links a {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--link-color);
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: var(--link-hover-color);
+}
+#playlist {
+    width: 100%; /* Full width for the playlist */
+    border-radius: 10px; /* Rounded corners for the playlist */
+    overflow: hidden; /* Hide overflow for rounded corners */
+    box-shadow: 0 4px 20px var(--shadow-color); /* Shadow for the playlist */
+}
+
+#playlist iframe {
+    width: 100%; /* Full width of the container */
+    height: 166px; /* Height for the SoundCloud player */
+    border: none; /* Remove default border */
+}
+
+footer {
+    margin-top: 20px;
+}
+
+footer p {
+    color: var(--text-color);
+    font-size: 7px;  /* Tiny font */
+    text-align: center;
+}
