@@ -1,10 +1,13 @@
 /* Global color variables */
 :root {
     --background-color: #121212;  /* off-black */
-    --card-background: rgba(128,128,128, 0.5);   /* grey */
+    --hover-card-background: rgba(0,0,0,0.5);
+    --card-background: rgba(128,128,128, 0.2);   /* grey */
     --text-color: #fff;           /* white for text */
     --link-color: #fff;           /* white for links */
     --link-hover-color: #cccccc;  /* lighter grey on hover */
+    --focus-color: #fff;
+    --shadow-color: rgba(12,12,12,0.9);
 }
 
 * {
@@ -16,25 +19,141 @@
 body {
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    /*background-color: var(--background-color);*/
-    background-image: url('background.jpg');
-    background-size: cover;        
-    background-position: center; 
+    background-color: var(--background-color);
     color: var(--text-color);
     font-family: Arial, sans-serif;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+    cursor: url('aerocursor.webp'), auto;
 }
 
+.p {
+    font-family:"Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+
+}
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Smooth fade-in */
+}
+
+/* Background for user1 */
+#background1 {
+    background-image: url('background1.jpg');
+}
+
+/* Background for user2 */
+#background2 {
+    background-image: url('background2.jpg');
+}
+
+/* Hover effects for user1 and user2 */
+#user1:hover ~ #background1 {
+    opacity: 1;  /* Fade in background1 */
+}
+
+#user2:hover ~ #background2 {
+    opacity: 1;  /* Fade in background2 */
+}
+
+#user:hover ~ #background1,
+#user:hover ~ #background2 {
+    opacity: 0;  /* Fade out the other background */
+}
+
+.container {
+    display: flex; /* Horizontal layout for cards */
+    gap: 20px; /* Space between cards */
+    z-index: 1;
+}
+
+#start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Absolute to cover the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    background-image:url('vf.webp');
+    background-size: cover;
+    background-position:center;
+    z-index: 10;
+}
+
+#start-button {
+    padding: 10px 20px;
+    font-size: 24px;
+    color: var(--text-color);
+    background:linear-gradient(to bottom, rgba(249,248,235,0.9),rgba(53,102,42,0.9));
+    border-style: solid;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 8px 8px 30px var(--shadow-color);
+}
+
+#start-button:hover {
+    background:linear-gradient(to bottom, rgba(249,248,235,0.4),rgba(53,102,42,0.4));  
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 60px var(--shadow-color);
+}
+
+#cards-container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+    flex-direction: row;     /* Align cards in a row */
+    gap: 20px;               /* Space between cards */
+    min-height: 100vh;       /* Make sure the container takes full viewport height */
+    opacity: 0;              /* Start hidden */
+    transition: opacity 1s ease-in-out;
+    z-index: 5;
+
+}
 .card {
     background-color: var(--card-background);
     padding: 30px;
-    border-radius: 15px;
+    border-style: solid;
+    border-width:0px;
+    border-color: rgba(255,255,255,0.7);
+    border-radius: 25px;
     text-align: center;
-    width: 400px; /* Fixed width of 600 pixels */
+    width: 300px; /* Fixed width of 600 pixels */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     max-width: 100%; /* Ensure responsiveness */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px var(--shadow-color);
+    border: none;
+}
+
+#user1:hover {
+    background: linear-gradient(to bottom, rgba(224,224,224,0.2),var(--hover-card-background));
+    color: var(--focus-color); /* Change text color on hover */
+}
+#user2:hover {
+    background: linear-gradient(to bottom, rgba(224,224,224,0.2),rgba(46,91,102,0.6));
+    color: var(--focus-color); /* Change text color on hover */
+}
+.user:hover .links a {
+    color: var(--focus-color); /* Change link color on hover */
 }
 
 .icon {
@@ -42,13 +161,13 @@ body {
     height: 10rem;  /* 60 pixels diameter */
     border-radius: 50%; /* Make it a circle */
     object-fit: cover;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 .links {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px; /* Space between links and the player */
+    margin-bottom: 0px; /* Space between links and the player */
 }
 
 .links a {
@@ -65,25 +184,67 @@ body {
 .links a:hover {
     color: var(--link-hover-color);
 }
-#playlist {
-    width: 100%; /* Full width for the playlist */
-    border-radius: 10px; /* Rounded corners for the playlist */
-    overflow: hidden; /* Hide overflow for rounded corners */
-    box-shadow: 0 4px 20px var(--shadow-color); /* Shadow for the playlist */
-}
-
-#playlist iframe {
-    width: 100%; /* Full width of the container */
-    height: 166px; /* Height for the SoundCloud player */
-    border: none; /* Remove default border */
-}
 
 footer {
     margin-top: 20px;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 footer p {
     color: var(--text-color);
-    font-size: 7px;  /* Tiny font */
+    font-size: 14px;  /* Tiny font */
     text-align: center;
+    padding-bottom: 10px;
 }
+
+.mute-unmute-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--text-color);  /* Use your global color */
+    cursor: pointer;
+    z-index: 10;  /* Make sure it's above the other elements */
+    transition: color 0.3s;
+}
+
+.mute-unmute-btn:hover {
+    color: var(--link-hover-color);  /* Change color on hover */
+}
+
+#aero-button {
+    background: linear-gradient(to bottom, #67c1f5, #3498db); /* Light blue to darker blue gradient */
+    border: 2px solid #0072C6; /* Darker border for 3D effect */
+    border-radius: 15px; /* Rounded corners */
+    color: white; /* Text color */
+    font-size: 20px; /* Adjust font size */
+    font-weight: bold; /* Bold font for emphasis */
+    padding: 15px 30px; /* Padding for size */
+    text-align: center; /* Center text */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Slight shadow under text */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), /* Inner glow */
+                0 5px 15px rgba(0, 0, 0, 0.3); /* Outer shadow */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+#aero-button:hover {
+    background: linear-gradient(to bottom, #8bd3f7, #67c1f5); /* Lighten on hover */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), /* Increase glow */
+                0 8px 20px rgba(0, 0, 0, 0.5); /* Increase shadow */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#aero-button:active {
+    background: linear-gradient(to bottom, #3498db, #0072C6); /* Darken when pressed */
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.3), /* Darken inner glow */
+                0 3px 10px rgba(0, 0, 0, 0.4); /* Reduce shadow */
+    transform: translateY(2px); /* Press down */
+}
+

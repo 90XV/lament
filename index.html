@@ -4,23 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L A M E N T</title>
+    <link rel="icon" type="image" href="cato.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Gelasio' rel='stylesheet'>
 </head>
 <body>
-    <div class="card">
-        <img src="icon.jpg" alt="Profile Icon" class="icon">
-        <div class="links">
-            <a href="https://soundcloud.com/s34s" target="_blank"><i class="fab fa-soundcloud"></i> <!-- SoundCloud icon --></a>
-        <a href="https://twitter.com/lRONSlGHTS" target="_blank"><i class="fab fa-twitter"></i> <!-- Twitter icon --></a>
-        </div>
-      <!--<div id ="playlist">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1732600278&color=%234d4d4d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/gensokyowrld" title="9ENSOKYO" target="_blank" style="color: #cccccc; text-decoration: none;">9ENSOKYO</a> · <a href="https://soundcloud.com/gensokyowrld/sets/the-9ensokyo-experience" title="the 9ENSOKYO experience" target="_blank" style="color: #cccccc; text-decoration: none;">the 9ENSOKYO experience</a></div>
-      </div>-->
+    
+    <button id="mute-button" class="mute-unmute-btn">
+        <i id="mute-icon" class="fas fa-volume-up"></i>
+    </button>
+
+    <!-- Audio for background music -->
+    <audio id="background-music" loop>
+        <source src="aero.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="start-screen">
+        <button id="start-button">welcome</button>
     </div>
+
+    <div id = "cards-container" class="container" style="display: none;">
+
+      <div class="card user" id="user1">
+        <img src="icon1.jpg" alt="User 1 Icon" class="icon">
+        <p style= "font-family: 'Gelasio'; font-size:22px;">adham</p>
+        <div class="links">
+            <a href="https://soundcloud.com/s34s" target="_blank">
+              <i class="fab fa-soundcloud"></i> <!-- SoundCloud icon -->
+            </a>
+            <a href="https://twitter.com/lRONSlGHTS" target="_blank">
+              <i class="fab fa-twitter"></i> <!-- Twitter icon -->
+            </a>
+        </div>
+      </div>
+
+      <div class="card user" id="user2">
+        <img src="icon2.jpg" alt="User 2 Icon" class="icon">
+        <p style= "font-family: 'Gelasio'; font-size:22px;">mimi</p>
+        <div class="links">
+            <a href="https://en.wikipedia.org/wiki/Whale" target="_blank">
+            &#128011;
+            </a>
+            <a href="https://en.wikipedia.org/wiki/Ocean_sunfish" target="_blank">
+            &#128031;
+            </a>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="background-image" id="background1"></div>
+    <div class="background-image" id="background2"></div>
+    
     <footer>
-        <p>--- images by @afternear ---</p>
+    <p>--- us two <3 ---</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
 
